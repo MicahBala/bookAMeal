@@ -124,3 +124,108 @@ header {
   background: var(--light-gray);
   transition: all 0.5s ease-out;
 }
+
+/* 
+* Sign up/Login Page
+*/
+.login-main-content {
+  width: 40%;
+  margin: 10% auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+form {
+  border: solid 1px var(--light-gray);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  width: 60%;
+  padding: 1rem 0;
+  margin: auto;
+  background-color: var(--background);
+  box-shadow: 0px 5px 20px 0px rgba(75, 79, 124, 0.1);
+}
+
+.login-header {
+  padding: 1rem 0;
+  font-size: 2rem;
+  color: var(--light-gray);
+}
+
+.tabs {
+  margin: auto;
+  /* padding: 1rem 0; */
+  display: flex;
+  /* justify-content: space-evenly; */
+  justify-items: center;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  color: var(--brown);
+  width: 60%;
+  background-color: var(--background);
+}
+
+.signup,
+.login {
+  width: 50%;
+  padding: 1rem 0;
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+  color: var(--light-gray);
+  border-top: solid 1px var(--light-gray);
+}
+
+.signup {
+  border-top-left-radius: 10px;
+  border-left: solid 1px var(--light-gray);
+  background-color: var(--brown);
+}
+
+.login {
+  border-top-right-radius: 10px;
+  border-right: solid 1px var(--light-gray);
+}
+
+input {
+  margin-top: 1rem;
+  padding: 0.8rem;
+  font-weight: 0.5rem;
+  font-size: 0.8rem;
+  width: 80%;
+  border-radius: 5px;
+  transition: all ease-out 1s;
+}
+
+button {
+  background-color: var(--brown);
+  width: 50%;
+  padding: 0.5rem;
+  border-radius: 5px;
+  color: var(--light-gray);
+  cursor: pointer;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.pw-reset a {
+  text-decoration: none;
+  color: var(--light-gray);
+}
+
+.darkBg {
+  background-color: var(--brown);
+}
+
+.lightBg {
+  background-color: var(--background);
+}
+
+.body-login {
+  background-image: linear-gradient(var(--dark), var(--dark)),
+    url(/app/ui/img/hero.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
