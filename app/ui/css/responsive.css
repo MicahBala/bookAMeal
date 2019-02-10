@@ -1,0 +1,130 @@
+/* 
+* Media Queries break points
+*/
+
+/* Variables */
+:root {
+  --dark: rgba(0, 0, 0, 0.6);
+  --gray: #8a8ca5;
+  --light-gray: #e7e7e8;
+  --brown: rgb(170, 60, 60);
+  --background: rgba(233, 98, 98, 0.2);
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width: 380px) {
+  /* 
+    * Landing Page 
+    */
+  .logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-top: 1.5rem;
+    margin-left: 1.5rem;
+  }
+
+  /* Navigation */
+  .main-nav {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .main-nav li {
+    border-bottom: solid 1px var(--light-gray);
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin: 0;
+  }
+
+  /* Hero */
+  .hero {
+    width: 90%;
+    top: 45%;
+    left: 10%;
+  }
+
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-text {
+    width: 90%;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+  }
+
+  .header-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    /* justify-content: center; */
+    width: 80%;
+  }
+
+  .btn {
+    text-align: center;
+    margin-bottom: 1rem;
+    padding: 0.2rem;
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width: 381px) and (max-width: 768px) {
+  /* 
+    * Landing Page 
+    */
+  .logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-top: 1.5rem;
+    margin-left: 1.5rem;
+  }
+
+  /* Navigation */
+  .main-nav {
+    display: flex;
+    float: none;
+    /* flex-direction: column; */
+    justify-content: center;
+    /* align-items: center; */
+    width: 100%;
+    padding-top: 1rem;
+    margin: 0;
+  }
+
+  /* Hero */
+  .hero {
+    width: 90%;
+    top: 25%;
+    left: 10%;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  /* .hero-text {
+    width: 90%;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+  }  */
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 769px) {
+}
