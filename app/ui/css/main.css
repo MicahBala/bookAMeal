@@ -229,3 +229,70 @@ button {
   background-size: cover;
   height: 100vh;
 }
+
+/* 
+* Admin Page
+*/
+.main-content-admin {
+  display: flex;
+}
+
+.side-menu-admin {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  background-color: var(--background);
+  height: 100vh;
+}
+
+.side-menu-admin a {
+  text-decoration: none;
+  color: var(--dark);
+  font-weight: bold;
+  padding: 1rem;
+  border-bottom: solid 1px var(--dark);
+}
+
+.content-admin {
+  width: 50%;
+  padding: 2rem;
+}
+
+.menu {
+  background-color: var(--background);
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu-body {
+  padding-top: 1rem;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.menu-footer {
+  padding: 0.5rem;
+  width: 6rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.menu .fa {
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.hide-details {
+  display: none;
+}
+
+.show-details {
+  display: block;
+}
