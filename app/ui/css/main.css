@@ -151,7 +151,7 @@ form {
 .login-header {
   padding: 1rem 0;
   font-size: 2rem;
-  color: var(--brown);
+  color: var(--light-gray);
 }
 
 .tabs {
@@ -172,16 +172,20 @@ form {
   width: 50%;
   padding: 1rem 0;
   cursor: pointer;
+  transition: all 0.5s ease-out;
+  color: var(--light-gray);
+  border-top: solid 1px var(--light-gray);
 }
 
 .signup {
   border-top-left-radius: 10px;
+  border-left: solid 1px var(--light-gray);
   background-color: var(--brown);
-  color: var(--light-gray);
 }
 
 .login {
   border-top-right-radius: 10px;
+  border-right: solid 1px var(--light-gray);
 }
 
 input {
@@ -199,7 +203,6 @@ button {
   width: 50%;
   padding: 0.5rem;
   border-radius: 5px;
-  /* margin: 1.5rem auto 0 auto; */
   color: var(--light-gray);
   cursor: pointer;
   text-align: center;
@@ -208,5 +211,21 @@ button {
 
 .pw-reset a {
   text-decoration: none;
-  color: var(--brown);
+  color: var(--light-gray);
+}
+
+.darkBg {
+  background-color: var(--brown);
+}
+
+.lightBg {
+  background-color: var(--background);
+}
+
+.body-login {
+  background-image: linear-gradient(var(--dark), var(--dark)),
+    url(/app/ui/img/hero.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
 }

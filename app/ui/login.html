@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="stylesheet" href="./css/responsive.css" />
   </head>
-  <body>
+  <body class="body-login">
     <div class="login-main-content">
       <h2 class="login-header">Book A Meal</h2>
       <div class="tabs">
@@ -16,18 +16,14 @@
         <div class="login"><h3>Log in</h3></div>
       </div>
       <form action="#" method="post">
-        <p><input type="text" placeholder="Your Full Name" /></p>
+        <p class="hide"><input type="text" placeholder="Your Full Name" /></p>
         <p><input type="email" placeholder="Your Email" /></p>
         <p><input type="password" placeholder="Your Password" /></p>
-        <p>
-          <input
-            type="password"
-            placeholder="Confirm Your Password"
-            class="hide"
-          />
+        <p class="hide">
+          <input type="password" placeholder="Confirm Your Password" />
         </p>
 
-        <button type="submit">Create Account</button>
+        <button class="btnSubmit" type="submit">Create Account</button>
         <p class="pw-reset"><a href="#">Reset your password</a></p>
       </form>
     </div>
