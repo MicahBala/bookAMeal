@@ -69,6 +69,10 @@ header {
   margin-right: 10rem;
 }
 
+.active {
+  border-bottom: 4px solid;
+}
+
 .main-nav li {
   display: inline-block;
   margin-left: 20px;
@@ -224,7 +228,7 @@ button {
 
 .body-login {
   background-image: linear-gradient(var(--dark), var(--dark)),
-    url(/app/ui/img/hero.jpg);
+    url(../img/hero.jpg);
   background-position: center;
   background-size: cover;
   height: 100vh;
