@@ -140,7 +140,7 @@ header {
   text-align: center;
 }
 
-form {
+.login-form {
   border: solid 1px var(--light-gray);
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -189,7 +189,7 @@ form {
   border-right: solid 1px var(--light-gray);
 }
 
-input {
+.login-input {
   margin-top: 1rem;
   padding: 0.8rem;
   font-weight: 0.5rem;
@@ -363,4 +363,32 @@ button {
   margin: 2rem auto;
   color: var(--light-gray);
   background-color: var(--brown);
+}
+
+.admin-form {
+  width: 45%;
+  padding: 0.5rem;
+  margin: 1rem 0 0 2rem;
+  border-radius: 10px;
+  background: var(--light-gray);
+  text-align: center;
+}
+.admin-input {
+  width: 80%;
+  padding: 1rem;
+  border-radius: 5px;
+  display: block;
+  margin: 1.5rem auto;
+}
+
+.btn-save-admin {
+  text-decoration: none;
+  color: var(--dark);
+  border: solid 1px var(--dark);
+  padding: 0.5rem;
+  border-radius: 10px;
+  font-weight: bold;
+  display: block;
+  width: 20%;
+  margin: 1rem auto;
 }

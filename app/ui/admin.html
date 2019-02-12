@@ -12,7 +12,7 @@
   <body>
     <div class="main-content-admin">
       <div class="side-menu-admin">
-        <a class="list-group-item" href="#"
+        <a class="list-group-item" href="admin.html"
           ><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Menu
           List</a
         >
@@ -24,6 +24,22 @@
         >
       </div>
       <div class="background-admin">
+        <div class="add-menu">
+          <form class="admin-form" action="#" method="post">
+            <input
+              class="admin-input"
+              type="text"
+              placeholder="Enter menu name"
+            />
+            <input
+              class="admin-input"
+              type="email"
+              placeholder="Enter menu description"
+            />
+
+            <a href="#" class="btn-save-admin">Add Menu</a>
+          </form>
+        </div>
         <div class="content-admin">
           <div id="menu-list"></div>
         </div>
