@@ -242,7 +242,7 @@ button {
   display: flex;
   flex-direction: column;
   width: 20%;
-  background-color: var(--background);
+  background-color: var(--light-gray);
   height: 100vh;
 }
 
@@ -259,8 +259,15 @@ button {
   padding: 2rem;
 }
 
+.background-admin {
+  background-image: linear-gradient(var(--dark), var(--dark)),
+    url(../img/hero.jpg);
+  background-size: cover;
+  width: 100%;
+}
+
 .menu {
-  background-color: var(--background);
+  background-color: var(--light-gray);
   padding: 1.5rem;
   border-radius: 10px;
 }
