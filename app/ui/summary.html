@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Book A Meal | Admin</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/responsive.css" />
+  </head>
+  <script src="https://use.fontawesome.com/a7a2ff373b.js"></script>
+  <body>
+    <div class="main-content-admin">
+      <div class="side-menu-admin">
+        <a class="list-group-item" href="admin.html"
+          ><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Menu
+          List</a
+        >
+        <a class="list-group-item" href="summary.html"
+          ><i class="fa fa-book fa-fw" aria-hidden="true"></i>&nbsp; Total
+          Orders</a
+        >
+        <a class="list-group-item" href="index.html"
+          ><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp; Logout</a
+        >
+      </div>
+      <div class="background-admin">
+        <div class="user-menu-list">
+          <h1 class="user-head">Total Orders</h1>
+          <div class="orders-display">
+            <form action="#" method="get" class="form-filter">
+              <select name="dateList" id="filterDate">
+                <option value="monday">Monday</option>
+                <option value="tuesday" selected="selected">Tuesday</option>
+                <option value="wednesday">Wednesday</option>
+                <option value="thurday">Thursday</option>
+                <option value="friday">Friday</option>
+                <option value="saturday">Saturday</option>
+              </select>
+              <input type="submit" value="Filter" id="btn-submit-filter" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/menu.js"></script>
+  </body>
+</html>
