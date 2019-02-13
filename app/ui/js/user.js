@@ -19,5 +19,21 @@ fetch("./jsonfiles/menu.json")
             `;
 
       list.innerHTML = result;
+
+      // Modals
+      let modalOrder = document.querySelector(".bg-modal-checkout");
+      let btnOrder = document.querySelectorAll(".btn-user-menu");
+      let cancelOrder = document.querySelector(".cancel-order");
+
+      //   Show Modal
+      btnOrder.forEach(order => {
+        order.addEventListener("click", () => {
+          modalOrder.style.display = "flex";
+        });
+      });
+
+      cancelOrder.addEventListener("click", () => {
+        modalOrder.style.display = "none";
+      });
     });
   });
