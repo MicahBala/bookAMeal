@@ -1,0 +1,29 @@
+{
+  "name": "book-a-meal",
+  "version": "1.0.0",
+  "description": "meal booking app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MicahBala/bookAMeal.git"
+  },
+  "keywords": [
+    "meal.",
+    "food",
+    "eat",
+    "book",
+    "menu"
+  ],
+  "author": "Micah Bala",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MicahBala/bookAMeal/issues"
+  },
+  "homepage": "https://github.com/MicahBala/bookAMeal#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
