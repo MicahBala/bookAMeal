@@ -1,14 +1,14 @@
 /* eslint-env mocha */
 
-import request from 'supertest';
-import app from '../app';
+import request from "supertest";
+import app from "../app";
 
-describe('homepage', () => {
-  it('welcomes the user', (done) => {
+describe("homepage", () => {
+  it("welcomes the user", done => {
     request(app)
-      .get('/')
+      .get("/")
       .expect(200)
-      .expect('Welcome to the meal booking app');
+      .expect("Welcome to the meal booking app");
     done();
   });
 });
