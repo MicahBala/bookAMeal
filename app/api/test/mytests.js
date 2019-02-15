@@ -2,13 +2,21 @@
 
 import request from "supertest";
 import app from "../app";
+import * as chai from "chai";
 
-describe("homepage", () => {
-  it("welcomes the user", done => {
+let assert = chai.assert;
+let expect = chai.expect();
+let should = chai.should();
+
+describe("Test API endpoints", () => {
+  it("Should get a list of all meals on /api/v1/meals", done => {
     request(app)
-      .get("/")
-      .expect(200)
-      .expect("Welcome to the meal booking app");
-    done();
+      .get("/api/v1/meals")
+      .end((err, res) => {
+        res.status.should.eql(200);
+        res.should.be.json;
+        res.body.success.should.eql(true);
+        done();
+      });
   });
 });
