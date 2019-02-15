@@ -4,6 +4,7 @@ const meals = [
     name: 'Bacon',
     description: 'Bacon ipsum dolor amet ribeye.',
     price: 'N400',
+    addedOn: Date.now(),
   },
 ];
 
