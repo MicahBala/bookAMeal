@@ -1,22 +1,17 @@
 /* eslint-env mocha */
 
 import request from "supertest";
-import app from "../app";
 import * as chai from "chai";
-
-let assert = chai.assert;
-let expect = chai.expect();
-let should = chai.should();
+import app from "../app";
 
 describe("Test API endpoints", () => {
-  it("Should get a list of all meals on /api/v1/meals", done => {
-    request(app)
-      .get("/api/v1/meals")
-      .end((err, res) => {
-        res.status.should.eql(200);
-        res.should.be.json;
-        res.body.success.should.eql(true);
-        done();
-      });
-  });
+  it("Should get all meals on GET /api/v1/meals");
+  it("Should add a meal option POST /api/v1/meals");
+  it("Update the information of a meal option on PUT /api/v1/meals/:id");
+  it("Should delete a meals on DELETE /api/v1/meals/:id");
+  it("Should set up menu for the day on POST /api/v1/menu");
+  it("Should get menu for the day on GET /api/v1/menu");
+  it("Should select meal option from menu POST /order");
+  it("Should modify an order on  PUT /api/v1/menu");
+  it("Should get all orders  GET /api/v1/menu");
 });
