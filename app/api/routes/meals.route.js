@@ -11,4 +11,7 @@ router.get("/api/v1/meals", mealsController.getAllMeals);
 // add a meal
 router.post("/api/v1/meals", mealsController.addMeal);
 
+// delete a meal
+router.delete("/api/v1/meals/:id", mealsController.deleteMeal);
+
 export default router;

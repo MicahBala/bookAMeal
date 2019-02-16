@@ -28,7 +28,8 @@ class MealsController {
       id: mealsDb.length + 1,
       name: req.body.name,
       description: req.body.description,
-      price: req.body.price
+      price: req.body.price,
+      date: Date.now()
     };
 
     mealsDb.push(meal);
@@ -37,6 +38,26 @@ class MealsController {
       success: true,
       message: "meal added successfully",
       meals: mealsDb[mealsDb.length - 1]
+    });
+  }
+
+  // delete a meal
+  deleteMeal(req, res) {
+    mealsDb.find((delMeal, index) => {
+      if (delMeal.id == parseInt(req.params.id)) {
+        mealsDb.splice(index, 1);
+        console.log(mealsDb[index]);
+
+        return res.status(200).send({
+          success: true,
+          message: "meal deleted successfully"
+        });
+      } else {
+        return res.status(404).send({
+          success: false,
+          message: "meal not found"
+        });
+      }
     });
   }
 }
