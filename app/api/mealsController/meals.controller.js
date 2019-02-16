@@ -43,21 +43,42 @@ class MealsController {
 
   // delete a meal
   deleteMeal(req, res) {
-    mealsDb.find((delMeal, index) => {
-      if (delMeal.id == parseInt(req.params.id)) {
+    mealsDb.map((delMeal, index) => {
+      if (delMeal.id === parseInt(req.params.id)) {
         mealsDb.splice(index, 1);
-        console.log(mealsDb[index]);
 
         return res.status(200).send({
           success: true,
           message: "meal deleted successfully"
         });
-      } else {
-        return res.status(404).send({
-          success: false,
-          message: "meal not found"
-        });
       }
+    });
+
+    return res.status(404).send({
+      success: false,
+      message: "meal not found"
+    });
+  }
+
+  // update meal info
+  updateMeal(req, res) {
+    const mealToUpdate = mealsDb.find(
+      updMeal => updMeal.id === parseInt(req.params.id)
+    );
+
+    if (!mealToUpdate)
+      return res.status(404).send({
+        success: false,
+        message: "meal not found"
+      });
+
+    mealToUpdate.name = req.body.title;
+    mealToUpdate.description = req.body.description;
+    mealToUpdate.price = req.body.price;
+
+    return res.status(200).send({
+      success: true,
+      message: "meal updated successfully"
     });
   }
 }
