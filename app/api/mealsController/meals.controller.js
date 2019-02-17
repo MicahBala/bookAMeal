@@ -1,11 +1,6 @@
 import mealsDb from "../db/meals.db";
 
 class MealsController {
-  // get home page
-  getHomePage(req, res) {
-    return res.send("Welcome to the meal booking app");
-  }
-
   //   get all meals
   getAllMeals(req, res) {
     res.status(200).send({
@@ -72,7 +67,7 @@ class MealsController {
         message: "meal not found"
       });
 
-    mealToUpdate.name = req.body.title;
+    mealToUpdate.name = req.body.name;
     mealToUpdate.description = req.body.description;
     mealToUpdate.price = req.body.price;
 
