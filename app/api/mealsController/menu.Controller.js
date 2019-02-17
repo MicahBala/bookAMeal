@@ -1,6 +1,15 @@
 import menuDb from "../db/menu.db";
 
 class MenuController {
+  // get all menu
+  getAllMenu(req, res) {
+    res.status(200).send({
+      success: true,
+      message: "menu retrieved successfully",
+      meals: menuDb
+    });
+  }
+
   //   add a menu
   addMenu(req, res) {
     if (!req.body.name) {
