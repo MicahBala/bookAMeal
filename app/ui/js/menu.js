@@ -36,6 +36,7 @@ fetch("./jsonfiles/menu.json")
       let modalEdit = document.querySelector(".bg-modal-edit");
 
       let modalCloseDelete = document.querySelector(".close-delete");
+      let modalOkDelete = document.querySelector(".confirm-delete");
       let modalCloseEdit = document.querySelector(".close-edit");
 
       let btnDelete = document.querySelectorAll(".btn-delete");
@@ -55,12 +56,17 @@ fetch("./jsonfiles/menu.json")
         });
       });
 
-      //   Close modal when the x button is clicked
+      //   Close delete modal when the x button is clicked
       modalCloseDelete.addEventListener("click", () => {
         modalDelete.style.display = "none";
       });
 
-      //   Close modal when the x button is clicked
+      //   Close delete modal when the ok button is clicked
+      modalOkDelete.addEventListener("click", () => {
+        modalDelete.style.display = "none";
+      });
+
+      //   Close edit modal when the x button is clicked
       modalCloseEdit.addEventListener("click", () => {
         modalEdit.style.display = "none";
       });
