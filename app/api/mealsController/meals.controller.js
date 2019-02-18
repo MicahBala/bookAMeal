@@ -1,4 +1,5 @@
 import mealsDb from "../db/meals.db";
+import Joi from "joi";
 
 class MealsController {
   //   get all meals
@@ -12,14 +13,20 @@ class MealsController {
 
   //   add a meal
   addMeal(req, res) {
-    if (!req.body.name || !req.body.description || !req.body.price) {
-      return res.status(404).send({
-        success: false,
-        message: "name, description and price required"
-      });
+    const schema = {
+      name: Joi.string().required(),
+      description: Joi.string().required(),
+      price: Joi.string().required()
+    };
+
+    const meal = Joi.validate(req.body, schema);
+
+    if (meal.error) {
+      res.status(404).send(meal.error.message);
+      return;
     }
 
-    const meal = {
+    const mealToAdd = {
       id: mealsDb.length + 1,
       name: req.body.name,
       description: req.body.description,
@@ -27,7 +34,7 @@ class MealsController {
       date: Date.now()
     };
 
-    mealsDb.push(meal);
+    mealsDb.push(mealToAdd);
 
     return res.status(200).send({
       success: true,
@@ -67,9 +74,20 @@ class MealsController {
         message: "meal not found"
       });
 
-    mealToUpdate.name = req.body.name;
-    mealToUpdate.description = req.body.description;
-    mealToUpdate.price = req.body.price;
+    const schema = {
+      name: Joi.string(),
+      description: Joi.string(),
+      price: Joi.string()
+    };
+
+    const result = Joi.validate(req.body, schema);
+    if (result.error) {
+      return res.status(404).send("meal not found");
+    }
+
+    mealToUpdate.name = req.body.name || mealToUpdate.name;
+    mealToUpdate.description = req.body.description || mealToUpdate.description;
+    mealToUpdate.price = req.body.price || mealToUpdate.price;
 
     return res.status(200).send({
       success: true,

@@ -1,4 +1,5 @@
 import menuDb from "../db/menu.db";
+import Joi from "joi";
 
 class MenuController {
   // get all menu
@@ -12,24 +13,27 @@ class MenuController {
 
   //   add a menu
   addMenu(req, res) {
-    if (!req.body.name) {
-      return res.status(404).send({
-        success: false,
-        message: "menu name required"
-      });
+    const schema = {
+      name: Joi.string().required()
+    };
+
+    const menu = Joi.validate(req.body, schema);
+
+    if (menu.error) {
+      res.status(404).send(menu.error.message);
+      return;
     }
 
-    const menu = {
+    const menuToAdd = {
       id: menuDb.length + 1,
       name: req.body.name,
       date: Date.now()
     };
-    menuDb.push(menu);
+    menuDb.push(menuToAdd);
 
     return res.status(200).send({
       success: true,
       message: "menu added successfully"
-      // menu: menuDb[menuDb.length - 1]
     });
   }
 }
