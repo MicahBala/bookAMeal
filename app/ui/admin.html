@@ -12,7 +12,7 @@
   <body>
     <div class="main-content-admin">
       <div class="side-menu-admin">
-        <a class="list-group-item" href="#"
+        <a class="list-group-item" href="admin.html"
           ><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Menu
           List</a
         >
@@ -23,34 +23,62 @@
           ><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp; Logout</a
         >
       </div>
-      <div class="content-admin">
-        <div class="menu-list">
-          <div class="menu">
-            <div class="menu-header">
-              <h1>Bacon</h1>
-              <i
-                class="fa fa-caret-square-o-down drop-menu"
-                aria-hidden="true"
-              ></i>
-            </div>
-            <div class="menu-body">
-              <p>
-                <span class="font-bold">Description: </span>Bacon ipsum dolor
-                amet fatback pork loin strip steak burgdoggen biltong tenderloin
-                bresaola kevin rump ribeye. Frankfurter pork belly leberkas
-                shoulder, pork tongue meatloaf boudin ball tip t-bone bacon beef
-                ribs short ribs doner fatback.
-              </p>
-              <div class="menu-footer">
-                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                <i class="fa fa-times-circle" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
+      <div class="background-admin">
+        <div class="add-menu">
+          <form class="admin-form" action="#" method="post">
+            <input
+              class="admin-input"
+              type="text"
+              placeholder="Enter menu name"
+            />
+            <input
+              class="admin-input"
+              type="email"
+              placeholder="Enter menu description"
+            />
+
+            <a href="#" class="btn-save-admin">Add Menu</a>
+          </form>
+        </div>
+        <div class="content-admin">
+          <div id="menu-list"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Delete Modal -->
+    <div class="bg-modal-delete">
+      <div class="content-modal-delete">
+        <div class="top">
+          <p>Delete</p>
+          <div class="close-delete">+</div>
+        </div>
+        <div class="confirm-text">
+          <p>You are about to delet a menu</p>
+          <div class="confirm-delete">OK</div>
         </div>
       </div>
     </div>
 
-    <!-- <script src="./js/main.js"></script> -->
+    <!-- Edit Modal -->
+    <div class="bg-modal-edit">
+      <div class="content-modal-edit">
+        <div class="top">
+          <p>Edit</p>
+          <div class="close-edit">+</div>
+        </div>
+        <div class="confirm-text">
+          <textarea
+            name="editmenu"
+            id="editmenu"
+            cols="40"
+            rows="5"
+            placeholder="edit description"
+          ></textarea>
+          <div class="confirm-edit">Save</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/menu.js"></script>
   </body>
 </html>
