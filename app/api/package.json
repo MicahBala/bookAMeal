@@ -1,0 +1,44 @@
+{
+  "name": "book-a-meal",
+  "version": "1.0.0",
+  "description": "meal booking app",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha --compilers js:babel-core/register test/*.js || true",
+    "lint": "eslint ../api --fix",
+    "start": "node_modules/.bin/nodemon app.js --exec babel-node --"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MicahBala/bookAMeal.git"
+  },
+  "keywords": [
+    "meal.",
+    "food",
+    "eat",
+    "book",
+    "menu"
+  ],
+  "author": "Micah Bala",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MicahBala/bookAMeal/issues"
+  },
+  "homepage": "https://github.com/MicahBala/bookAMeal#readme",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "joi": "^14.3.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^5.13.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.10",
+    "supertest": "^3.4.2"
+  }
+}
