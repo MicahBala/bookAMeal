@@ -2,6 +2,15 @@ import orderDb from "../db/order.db";
 import Joi from "joi";
 
 class OrderController {
+  // get all orders
+  getAllOrders(req, res) {
+    res.status(200).send({
+      success: true,
+      message: "orders retrieved successfully",
+      orders: orderDb
+    });
+  }
+
   //place an order
   placeOrder(req, res) {
     const schema = {
