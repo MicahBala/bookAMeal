@@ -1,70 +1,70 @@
-import orderDb from "../db/order.db";
-import Joi from "joi";
+import Joi from 'joi';
+import orderDb from '../db/order.db';
 
 class OrderController {
   // get all orders
   getAllOrders(req, res) {
     res.status(200).send({
       success: true,
-      message: "orders retrieved successfully",
-      orders: orderDb
+      message: 'orders retrieved successfully',
+      orders: orderDb,
     });
   }
 
-  //place an order
+  // place an order
   placeOrder(req, res) {
     const schema = {
-      mealName: Joi.string().required()
+      mealName: Joi.string().required(),
     };
 
     const order = Joi.validate(req.body, schema);
 
     if (order.error) {
-      res.status(404).send(order.error.message);
-      return;
+      return res.status(404).send(order.error.message);
     }
 
     const orderToAdd = {
       id: orderDb.length + 1,
       mealName: req.body.mealName,
-      date: Date.now()
+      date: Date.now(),
     };
 
     orderDb.push(orderToAdd);
 
     return res.status(200).send({
       success: true,
-      message: "you have successfully placed an order"
+      message: 'you have successfully placed an order',
     });
   }
 
   //   modify an existing order
   modifyOrder(req, res) {
     const orderToUpdate = orderDb.find(
-      updOrder => updOrder.id === parseInt(req.params.id)
+      updOrder => updOrder.id === parseInt(req.params.id, 10),
     );
 
-    if (!orderToUpdate)
+    if (!orderToUpdate) {
       return res.status(404).send({
         success: false,
-        message: "order not found"
+        message: 'order not found',
       });
+    }
 
     const schema = {
-      mealName: Joi.string().required()
+      mealName: Joi.string().required(),
     };
 
     const result = Joi.validate(req.body, schema);
 
     if (result.error) {
-      return res.status(404).send("order not found");
+      return res.status(404).send('order not found');
     }
 
     orderToUpdate.mealName = req.body.mealName || orderToUpdate.mealName;
 
     return res.status(200).send({
       success: true,
-      message: "order updated successfully"
+      message: 'order updated successfully',
     });
   }
 }

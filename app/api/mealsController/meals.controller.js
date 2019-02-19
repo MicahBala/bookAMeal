@@ -1,5 +1,5 @@
-import mealsDb from "../db/meals.db";
 import Joi from "joi";
+import mealsDb from "../db/meals.db";
 
 class MealsController {
   //   get all meals
@@ -22,8 +22,7 @@ class MealsController {
     const meal = Joi.validate(req.body, schema);
 
     if (meal.error) {
-      res.status(404).send(meal.error.message);
-      return;
+      return res.status(404).send(meal.error.message);
     }
 
     const mealToAdd = {
@@ -46,7 +45,7 @@ class MealsController {
   // delete a meal
   deleteMeal(req, res) {
     mealsDb.map((delMeal, index) => {
-      if (delMeal.id === parseInt(req.params.id)) {
+      if (delMeal.id === parseInt(req.params.id, 10)) {
         mealsDb.splice(index, 1);
 
         return res.status(200).send({
@@ -54,6 +53,7 @@ class MealsController {
           message: "meal deleted successfully"
         });
       }
+      return false;
     });
 
     return res.status(404).send({
@@ -65,14 +65,15 @@ class MealsController {
   // update meal info
   updateMeal(req, res) {
     const mealToUpdate = mealsDb.find(
-      updMeal => updMeal.id === parseInt(req.params.id)
+      updMeal => updMeal.id === parseInt(req.params.id, 10)
     );
 
-    if (!mealToUpdate)
+    if (!mealToUpdate) {
       return res.status(404).send({
         success: false,
         message: "meal not found"
       });
+    }
 
     const schema = {
       name: Joi.string(),

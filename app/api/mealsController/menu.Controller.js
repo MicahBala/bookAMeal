@@ -1,5 +1,5 @@
-import menuDb from "../db/menu.db";
 import Joi from "joi";
+import menuDb from "../db/menu.db";
 
 class MenuController {
   // get all menu
@@ -20,8 +20,7 @@ class MenuController {
     const menu = Joi.validate(req.body, schema);
 
     if (menu.error) {
-      res.status(404).send(menu.error.message);
-      return;
+      return res.status(404).send(menu.error.message);
     }
 
     const menuToAdd = {
