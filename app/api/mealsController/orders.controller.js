@@ -28,6 +28,36 @@ class OrderController {
       message: "you have successfully placed an order"
     });
   }
+
+  //   modify an existing order
+  modifyOrder(req, res) {
+    const orderToUpdate = orderDb.find(
+      updOrder => updOrder.id === parseInt(req.params.id)
+    );
+
+    if (!orderToUpdate)
+      return res.status(404).send({
+        success: false,
+        message: "order not found"
+      });
+
+    const schema = {
+      mealName: Joi.string().required()
+    };
+
+    const result = Joi.validate(req.body, schema);
+
+    if (result.error) {
+      return res.status(404).send("order not found");
+    }
+
+    orderToUpdate.mealName = req.body.mealName || orderToUpdate.mealName;
+
+    return res.status(200).send({
+      success: true,
+      message: "order updated successfully"
+    });
+  }
 }
 
 const orderController = new OrderController();
