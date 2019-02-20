@@ -52,13 +52,12 @@ class MealsController {
           success: true,
           message: "meal deleted successfully"
         });
+      } else {
+        return res.status(404).send({
+          success: false,
+          message: "meal not found"
+        });
       }
-      return false;
-    });
-
-    return res.status(404).send({
-      success: false,
-      message: "meal not found"
     });
   }
 
