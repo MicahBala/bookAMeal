@@ -4,7 +4,7 @@
   "description": "meal booking app",
   "main": "app.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register test/*.js || true",
+    "test": "mocha --compilers js:babel-core/register test/*.js --exit",
     "lint": "eslint ../api --fix",
     "start": "node_modules/.bin/nodemon app.js --exec babel-node --"
   },
