@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/MicahBala/bookAMeal.svg?branch=develop)](https://travis-ci.com/MicahBala/bookAMeal)
+
 # BOOK A MEAL
 
 This is a project challenge given to participants pof the meetup organized by
