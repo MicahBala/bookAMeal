@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.com/MicahBala/bookAMeal.svg?branch=develop)](https://travis-ci.com/MicahBala/bookAMeal)
 
+[![Coverage Status](https://coveralls.io/repos/github/MicahBala/bookAMeal/badge.svg?branch=develop)](https://coveralls.io/github/MicahBala/bookAMeal?branch=develop)
+
 # BOOK A MEAL
 
 This is a project challenge given to participants pof the meetup organized by
