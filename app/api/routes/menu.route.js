@@ -1,5 +1,5 @@
 import express from "express";
-import menuController from "../mealsController/menu.controller";
+import menuController from "../mealsController/menucontroller";
 
 const router = express.Router();
 
