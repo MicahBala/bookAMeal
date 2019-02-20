@@ -13,4 +13,3 @@ after_success:
   - npm run coverage
   - npm run coveralls
   - npm run report-coverage
-  - ./node_modules/.bin/mocha
