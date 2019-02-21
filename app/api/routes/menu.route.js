@@ -1,12 +1,12 @@
-import express from "express";
-import menuController from "../mealsController/menucontroller";
+import express from 'express';
+import menuController from '../mealsController/menucontroller';
 
 const router = express.Router();
 
 // add a menu
-router.post("/api/v1/menu", menuController.addMenu);
+router.post('/api/v1/menu', menuController.addMenu);
 
 // get all menu
-router.get("/api/v1/menu", menuController.getAllMenu);
+router.get('/api/v1/menu', menuController.getAllMenu);
 
 export default router;

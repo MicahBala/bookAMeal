@@ -1,5 +1,5 @@
-import Joi from "joi";
-import usersDb from "../db/users.db";
+import Joi from 'joi';
+import usersDb from '../db/users.db';
 
 class UsersController {
   // add new user
@@ -8,7 +8,7 @@ class UsersController {
       firstName: Joi.string().required(),
       lastName: Joi.string().required(),
       password: Joi.string().required(),
-      isAdmin: Joi.boolean()
+      isAdmin: Joi.boolean(),
     };
 
     const user = Joi.validate(req.body, schema);
@@ -22,15 +22,15 @@ class UsersController {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       password: req.body.password,
-      isAdmin: false
+      isAdmin: false,
     };
 
     usersDb.push(userToAdd);
 
     return res.status(200).send({
       success: true,
-      message: "new user added successfully",
-      newUser: usersDb[usersDb.length - 1]
+      message: 'new user added successfully',
+      newUser: usersDb[usersDb.length - 1],
     });
   }
 }
