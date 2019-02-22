@@ -1,20 +1,21 @@
-import Joi from "joi";
-import menuDb from "../db/menu.db";
+import Joi from 'joi';
+import ids from 'short-id';
+import menuDb from '../db/menu.db';
 
 class MenuController {
   // get all menu
   getAllMenu(req, res) {
     res.status(200).send({
       success: true,
-      message: "menu retrieved successfully",
-      meals: menuDb
+      message: 'menu retrieved successfully',
+      meals: menuDb,
     });
   }
 
   //   add a menu
   addMenu(req, res) {
     const schema = {
-      name: Joi.string().required()
+      name: Joi.string().required(),
     };
 
     const menu = Joi.validate(req.body, schema);
@@ -24,15 +25,15 @@ class MenuController {
     }
 
     const menuToAdd = {
-      id: menuDb.length + 1,
+      id: ids.generate(),
       name: req.body.name,
-      date: Date.now()
+      date: Date.now(),
     };
     menuDb.push(menuToAdd);
 
     return res.status(200).send({
       success: true,
-      message: "menu added successfully"
+      message: 'menu added successfully',
     });
   }
 }
