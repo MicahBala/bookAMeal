@@ -33,6 +33,36 @@ class UsersController {
       newUser: usersDb[usersDb.length - 1],
     });
   }
+
+  //  user login
+  loginUser(req, res) {
+    const schema = {
+      userName: Joi.string().required(),
+      password: Joi.string().required(),
+    };
+
+    const user = Joi.validate(req.body, schema);
+
+    if (user.error) {
+      return res.status(404).send(user.error.message);
+    }
+
+    const loginUser = usersDb.find(
+      userFound => userFound.userName === req.body.userName
+        && user.passowrd === req.body.passowrd,
+    );
+
+    if (!loginUser) {
+      return res.status(404).send({
+        success: false,
+        message: 'Sorry you are not registered!',
+      });
+    }
+    return res.status(200).send({
+      success: true,
+      message: `Welcome ${loginUser.lastName}!`,
+    });
+  }
 }
 
 const usersController = new UsersController();
