@@ -1,5 +1,5 @@
-import Joi from 'joi';
-import usersDb from '../db/users.db';
+import Joi from "joi";
+import usersDb from "../db/users.db";
 
 class UsersController {
   // add new user
@@ -7,8 +7,9 @@ class UsersController {
     const schema = {
       firstName: Joi.string().required(),
       lastName: Joi.string().required(),
+      userName: Joi.string().required(),
       password: Joi.string().required(),
-      isAdmin: Joi.boolean(),
+      isAdmin: Joi.boolean()
     };
 
     const user = Joi.validate(req.body, schema);
@@ -21,16 +22,17 @@ class UsersController {
       id: usersDb.length + 1,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
+      userName: req.body.userName,
       password: req.body.password,
-      isAdmin: false,
+      isAdmin: false
     };
 
     usersDb.push(userToAdd);
 
     return res.status(200).send({
       success: true,
-      message: 'new user added successfully',
-      newUser: usersDb[usersDb.length - 1],
+      message: "new user added successfully",
+      newUser: usersDb[usersDb.length - 1]
     });
   }
 
@@ -38,7 +40,7 @@ class UsersController {
   loginUser(req, res) {
     const schema = {
       userName: Joi.string().required(),
-      password: Joi.string().required(),
+      password: Joi.string().required()
     };
 
     const user = Joi.validate(req.body, schema);
@@ -48,19 +50,20 @@ class UsersController {
     }
 
     const loginUser = usersDb.find(
-      userFound => userFound.userName === req.body.userName
-        && user.passowrd === req.body.passowrd,
+      userFound =>
+        userFound.userName === req.body.userName &&
+        user.passowrd === req.body.passowrd
     );
 
     if (!loginUser) {
       return res.status(404).send({
         success: false,
-        message: 'Sorry you are not registered!',
+        message: "Sorry you are not registered!"
       });
     }
     return res.status(200).send({
       success: true,
-      message: `Welcome ${loginUser.lastName}!`,
+      message: `Welcome ${loginUser.lastName}!`
     });
   }
 }
