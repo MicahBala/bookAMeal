@@ -1,4 +1,5 @@
 import Joi from 'joi';
+import ids from 'short-id';
 import menuDb from '../db/menu.db';
 
 class MenuController {
@@ -24,7 +25,7 @@ class MenuController {
     }
 
     const menuToAdd = {
-      id: menuDb.length + 1,
+      id: ids.generate(),
       name: req.body.name,
       date: Date.now(),
     };

@@ -1,4 +1,5 @@
 import Joi from 'joi';
+import ids from 'short-id';
 import orderDb from '../db/order.db';
 
 class OrderController {
@@ -24,7 +25,7 @@ class OrderController {
     }
 
     const orderToAdd = {
-      id: orderDb.length + 1,
+      id: ids.generate(),
       mealName: req.body.mealName,
       date: Date.now(),
     };
