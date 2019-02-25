@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/MicahBala/bookAMeal.svg?branch=develop)](https://travis-ci.com/MicahBala/bookAMeal) [![Coverage Status](https://coveralls.io/repos/github/MicahBala/bookAMeal/badge.svg?branch=develop)](https://coveralls.io/github/MicahBala/bookAMeal?branch=develop)
+[![Build Status](https://travis-ci.com/MicahBala/bookAMeal.svg?branch=develop)](https://travis-ci.com/MicahBala/bookAMeal) [![Coverage Status](https://coveralls.io/repos/github/MicahBala/bookAMeal/badge.svg?branch=develop)](https://coveralls.io/github/MicahBala/bookAMeal?branch=develop) [![Test Coverage](https://api.codeclimate.com/v1/badges/d0fa97ddba9d872374fe/test_coverage)](https://codeclimate.com/github/MicahBala/bookAMeal/test_coverage) [![Test Coverage](https://api.codeclimate.com/v1/badges/d0fa97ddba9d872374fe/test_coverage)](https://codeclimate.com/github/MicahBala/bookAMeal/test_coverage)
 
 # BOOK A MEAL
 
