@@ -16,4 +16,4 @@ script:
 after_success:
   - npm run coverage
 after_script:
-  - codeclimate-test-reporter < .nyc_output
+  - npm install codeclimate-test-reporter &amp;&amp; cat coverage/lcov.info | codeclimate-test-reporter
