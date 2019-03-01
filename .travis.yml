@@ -6,7 +6,7 @@ cache:
     - node_modules
 env:
   global:
-    - CC_TEST_REPORTER_ID=ecbd1ef4cc143a85f4e3007506163c7c3a8fafa1308189e57e4bbb3e8206733f
+    - CODECLIMATE_REPO_TOKEN=ecbd1ef4cc143a85f4e3007506163c7c3a8fafa1308189e57e4bbb3e8206733f
 install:
   - "npm install"
 language: node_js
