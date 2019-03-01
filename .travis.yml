@@ -1,21 +1,16 @@
-language: node_js
-node_js:
-  - "stable"
-
+after_success:
+  - "npm run coverage"
+before_install: "cd app/api"
 cache:
   directories:
-    - "node_modules"
-
-before_install: cd app/api
+    - node_modules
+env:
+  global:
+    - CC_TEST_REPORTER_ID=ecbd1ef4cc143a85f4e3007506163c7c3a8fafa1308189e57e4bbb3e8206733f
 install:
-  - npm install
-
+  - "npm install"
+language: node_js
+node_js:
+  - stable
 script:
-  - npm run test
-
-after_success:
-  - npm run coverage
-
-  env:
-    global:
-      - CC_TEST_REPORTER_ID=ecbd1ef4cc143a85f4e3007506163c7c3a8fafa1308189e57e4bbb3e8206733f
+  - "npm run test"
