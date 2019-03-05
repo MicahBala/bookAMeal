@@ -3,11 +3,11 @@ import bodyParser from "body-parser";
 import router from "./routes/index";
 
 // Database
-const db = require("./config/dbConnect");
+import db from "./config/dbConnect";
 // Test db connection
 db.authenticate()
   .then(() => console.log("Database connected..."))
-  .catch(err => console.log("Error: " + err));
+  .catch(err => console.log(`Error: ${err}`));
 
 const app = express();
 

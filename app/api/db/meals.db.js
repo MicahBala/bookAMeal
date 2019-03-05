@@ -1,5 +1,5 @@
-const Sequelize = require("sequelize");
-const db = require("../config/dbConnect");
+import Sequelize from "sequelize";
+import db from "../config/dbConnect";
 
 const Meal = db.define("mealtbl", {
   name: {
