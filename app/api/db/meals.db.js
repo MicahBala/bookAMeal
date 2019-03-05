@@ -8,8 +8,8 @@ const Meal = db.define("mealtbl", {
   description: {
     type: Sequelize.STRING
   },
-  createdAt: {
-    type: Sequelize.DATE
+  price: {
+    type: Sequelize.STRING
   }
 });
 

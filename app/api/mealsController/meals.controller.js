@@ -1,17 +1,17 @@
-import Joi from 'joi';
-import ids from 'short-id';
-import mealsDb from '../db/meals.db';
+import Joi from "joi";
+import ids from "short-id";
+import mealsDb from "../db/meals.db";
 
 class MealsController {
   //   get all meals
   getAllMeals(req, res) {
     mealsDb
       .findAll()
-      .then((meals) => {
+      .then(meals => {
         res.status(200).send({
           success: true,
-          message: 'meals retrieved successfully',
-          meals,
+          message: "meals retrieved successfully",
+          meals
         });
       })
       .catch(err => console.log(err));
@@ -22,7 +22,7 @@ class MealsController {
     const schema = {
       name: Joi.string().required(),
       description: Joi.string().required(),
-      price: Joi.string().required(),
+      price: Joi.string().required()
     };
 
     const meal = Joi.validate(req.body, schema);
@@ -31,20 +31,14 @@ class MealsController {
       return res.status(404).send(meal.error.message);
     }
 
-    const mealToAdd = {
-      id: ids.generate(),
-      name: req.body.name,
-      description: req.body.description,
-      price: req.body.price,
-      date: Date.now(),
-    };
+    let { name, description, price } = req.body;
 
-    mealsDb.push(mealToAdd);
-
-    return res.status(200).send({
-      success: true,
-      message: 'meal added successfully',
-      meals: mealsDb[mealsDb.length - 1],
+    mealsDb.create({ name, description, price }).then(meals => {
+      return res.status(200).send({
+        success: true,
+        message: "meal added successfully",
+        meals
+      });
     });
   }
 
@@ -56,12 +50,12 @@ class MealsController {
 
         return res.status(200).send({
           success: true,
-          message: 'meal deleted successfully',
+          message: "meal deleted successfully"
         });
       }
       return res.status(404).send({
         success: false,
-        message: 'meal not found',
+        message: "meal not found"
       });
     });
   }
@@ -69,25 +63,25 @@ class MealsController {
   // update meal info
   updateMeal(req, res) {
     const mealToUpdate = mealsDb.find(
-      updMeal => updMeal.id === parseInt(req.params.id, 10),
+      updMeal => updMeal.id === parseInt(req.params.id, 10)
     );
 
     if (!mealToUpdate) {
       return res.status(404).send({
         success: false,
-        message: 'meal not found',
+        message: "meal not found"
       });
     }
 
     const schema = {
       name: Joi.string(),
       description: Joi.string(),
-      price: Joi.string(),
+      price: Joi.string()
     };
 
     const result = Joi.validate(req.body, schema);
     if (result.error) {
-      return res.status(404).send('meal not found');
+      return res.status(404).send("meal not found");
     }
 
     mealToUpdate.name = req.body.name || mealToUpdate.name;
@@ -96,7 +90,7 @@ class MealsController {
 
     return res.status(200).send({
       success: true,
-      message: 'meal updated successfully',
+      message: "meal updated successfully"
     });
   }
 }
