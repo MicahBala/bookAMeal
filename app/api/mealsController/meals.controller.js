@@ -44,18 +44,10 @@ class MealsController {
 
   // delete a meal
   deleteMeal(req, res) {
-    mealsDb.find((delMeal, index) => {
-      if (delMeal.id === parseInt(req.params.id, 10)) {
-        mealsDb.splice(index, 1);
-
-        return res.status(200).send({
-          success: true,
-          message: "meal deleted successfully"
-        });
-      }
-      return res.status(404).send({
-        success: false,
-        message: "meal not found"
+    mealsDb.destroy({ where: { id: req.params.id } }).then(() => {
+      return res.status(200).send({
+        success: true,
+        message: "meal deleted successfully"
       });
     });
   }
