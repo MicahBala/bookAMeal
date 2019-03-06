@@ -1,5 +1,4 @@
 import Joi from "joi";
-import ids from "short-id";
 import mealsDb from "../db/meals.db";
 
 class MealsController {

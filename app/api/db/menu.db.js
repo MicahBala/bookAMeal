@@ -1,14 +1,10 @@
-const menu = [
-  {
-    id: 1,
-    name: 'Bacon',
-    addedOn: Date.now(),
-  },
-  {
-    id: 2,
-    name: 'Fried',
-    addedOn: Date.now(),
-  },
-];
+import Sequelize from "sequelize";
+import db from "../config/dbConnect";
 
-export default menu;
+const Menu = db.define("menutbl", {
+  name: {
+    type: Sequelize.STRING
+  }
+});
+
+export default Menu;
