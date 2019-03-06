@@ -1,10 +1,10 @@
-import Sequelize from "sequelize";
-import db from "../config/dbConnect";
+import Sequelize from 'sequelize';
+import db from '../config/dbConnect';
 
-const Order = db.define("ordertbls", {
+const Order = db.define('ordertbls', {
   name: {
-    type: Sequelize.STRING
-  }
+    type: Sequelize.STRING,
+  },
 });
 
 export default Order;

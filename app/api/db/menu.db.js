@@ -1,10 +1,10 @@
-import Sequelize from "sequelize";
-import db from "../config/dbConnect";
+import Sequelize from 'sequelize';
+import db from '../config/dbConnect';
 
-const Menu = db.define("menutbl", {
+const Menu = db.define('menutbl', {
   name: {
-    type: Sequelize.STRING
-  }
+    type: Sequelize.STRING,
+  },
 });
 
 export default Menu;

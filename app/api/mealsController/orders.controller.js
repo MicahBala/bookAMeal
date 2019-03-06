@@ -1,14 +1,14 @@
-import Joi from "joi";
-import orderDb from "../db/order.db";
+import Joi from 'joi';
+import orderDb from '../db/order.db';
 
 class OrderController {
   // get all orders
   getAllOrders(req, res) {
-    orderDb.findAll().then(orders => {
+    orderDb.findAll().then((orders) => {
       res.status(200).send({
         success: true,
-        message: "orders were retrieved successfully",
-        orders
+        message: 'orders were retrieved successfully',
+        orders,
       });
     });
   }
@@ -16,7 +16,7 @@ class OrderController {
   // place an order
   placeOrder(req, res) {
     const schema = {
-      name: Joi.string().required()
+      name: Joi.string().required(),
     };
 
     const order = Joi.validate(req.body, schema);
@@ -25,12 +25,11 @@ class OrderController {
       return res.status(404).send(order.error.message);
     }
 
-    orderDb.create({ name: req.body.name }).then(order => {
-      return res.status(200).send({
-        success: true,
-        message: "you have successfully placed an order"
-      });
-    });
+    return orderDb.create({ name: req.body.name }).then(myOrder => res.status(200).send({
+      success: true,
+      message: 'you have successfully placed an order',
+      myOrder,
+    }));
   }
 
   //   modify an existing order
@@ -38,16 +37,13 @@ class OrderController {
     orderDb
       .update(
         { name: req.body.name },
-        { returning: true, where: { id: req.params.id } }
+        { returning: true, where: { id: req.params.id } },
       )
-      .then(([rowsUpdated, [updatedOrder]]) => {
-        return res.status(200).send({
-          success: true,
-          message: "order updated successfully",
-          updatedOrder
-        });
-      })
-      .catch(err => console.log(err));
+      .then(([updatedOrder]) => res.status(200).send({
+        success: true,
+        message: 'order updated successfully',
+        updatedOrder,
+      }));
   }
 }
 

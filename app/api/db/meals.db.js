@@ -1,16 +1,16 @@
-import Sequelize from "sequelize";
-import db from "../config/dbConnect";
+import Sequelize from 'sequelize';
+import db from '../config/dbConnect';
 
-const Meal = db.define("mealtbl", {
+const Meal = db.define('mealtbl', {
   name: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
   },
   description: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
   },
   price: {
-    type: Sequelize.STRING
-  }
+    type: Sequelize.STRING,
+  },
 });
 
 export default Meal;
