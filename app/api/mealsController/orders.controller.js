@@ -1,21 +1,22 @@
-import Joi from 'joi';
-import ids from 'short-id';
-import orderDb from '../db/order.db';
+import Joi from "joi";
+import models from "../models";
 
 class OrderController {
   // get all orders
   getAllOrders(req, res) {
-    res.status(200).send({
-      success: true,
-      message: 'orders retrieved successfully',
-      orders: orderDb,
+    models.Order.findAll().then(orders => {
+      res.status(200).send({
+        success: true,
+        message: "orders were retrieved successfully",
+        orders
+      });
     });
   }
 
   // place an order
   placeOrder(req, res) {
     const schema = {
-      mealName: Joi.string().required(),
+      order_name: Joi.string().required()
     };
 
     const order = Joi.validate(req.body, schema);
@@ -24,48 +25,29 @@ class OrderController {
       return res.status(404).send(order.error.message);
     }
 
-    const orderToAdd = {
-      id: ids.generate(),
-      mealName: req.body.mealName,
-      date: Date.now(),
-    };
-
-    orderDb.push(orderToAdd);
-
-    return res.status(200).send({
-      success: true,
-      message: 'you have successfully placed an order',
-    });
+    return models.Order.create({ order_name: req.body.order_name }).then(
+      myOrder =>
+        res.status(200).send({
+          success: true,
+          message: "you have successfully placed an order",
+          myOrder
+        })
+    );
   }
 
   //   modify an existing order
   modifyOrder(req, res) {
-    const orderToUpdate = orderDb.find(
-      updOrder => updOrder.id === parseInt(req.params.id, 10),
-    );
-
-    if (!orderToUpdate) {
-      return res.status(404).send({
-        success: false,
-        message: 'order not found',
-      });
-    }
-
-    const schema = {
-      mealName: Joi.string().required(),
-    };
-
-    const result = Joi.validate(req.body, schema);
-
-    if (result.error) {
-      return res.status(404).send('order not found');
-    }
-
-    orderToUpdate.mealName = req.body.mealName || orderToUpdate.mealName;
-
-    return res.status(200).send({
-      success: true,
-      message: 'order updated successfully',
+    models.Order.findAll().then(orderFound => {
+      models.Order.update(
+        { order_name: req.body.order_name || orderFound.order_name },
+        { returning: true, where: { id: req.params.id } }
+      ).then(([updatedOrder]) =>
+        res.status(200).send({
+          success: true,
+          message: "order updated successfully",
+          updatedOrder
+        })
+      );
     });
   }
 }

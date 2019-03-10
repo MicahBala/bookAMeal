@@ -1,23 +1,24 @@
-import Joi from 'joi';
-import ids from 'short-id';
-import mealsDb from '../db/meals.db';
+import Joi from "joi";
+import models from "../models";
 
 class MealsController {
   //   get all meals
   getAllMeals(req, res) {
-    res.status(200).send({
-      success: true,
-      message: 'meals retrieved successfully',
-      meals: mealsDb,
+    models.Meal.findAll().then(meal => {
+      res.status(200).send({
+        success: true,
+        message: "meals retrieved successfully",
+        meal
+      });
     });
   }
 
   //   add a meal
   addMeal(req, res) {
     const schema = {
-      name: Joi.string().required(),
-      description: Joi.string().required(),
-      price: Joi.string().required(),
+      meal_name: Joi.string().required(),
+      meal_description: Joi.string().required(),
+      meal_price: Joi.string().required()
     };
 
     const meal = Joi.validate(req.body, schema);
@@ -26,72 +27,46 @@ class MealsController {
       return res.status(404).send(meal.error.message);
     }
 
-    const mealToAdd = {
-      id: ids.generate(),
-      name: req.body.name,
-      description: req.body.description,
-      price: req.body.price,
-      date: Date.now(),
-    };
+    const { meal_name, meal_description, meal_price } = req.body;
 
-    mealsDb.push(mealToAdd);
-
-    return res.status(200).send({
-      success: true,
-      message: 'meal added successfully',
-      meals: mealsDb[mealsDb.length - 1],
-    });
+    return models.Meal.create({ meal_name, meal_description, meal_price }).then(
+      meals =>
+        res.status(200).send({
+          success: true,
+          message: "meal added successfully",
+          meals
+        })
+    );
   }
 
   // delete a meal
   deleteMeal(req, res) {
-    mealsDb.find((delMeal, index) => {
-      if (delMeal.id === parseInt(req.params.id, 10)) {
-        mealsDb.splice(index, 1);
-
-        return res.status(200).send({
-          success: true,
-          message: 'meal deleted successfully',
-        });
-      }
-      return res.status(404).send({
-        success: false,
-        message: 'meal not found',
-      });
-    });
+    models.Meal.destroy({ where: { id: req.params.id } }).then(() =>
+      res.status(200).send({
+        success: true,
+        message: "meal deleted successfully"
+      })
+    );
   }
 
   // update meal info
   updateMeal(req, res) {
-    const mealToUpdate = mealsDb.find(
-      updMeal => updMeal.id === parseInt(req.params.id, 10),
-    );
-
-    if (!mealToUpdate) {
-      return res.status(404).send({
-        success: false,
-        message: 'meal not found',
-      });
-    }
-
-    const schema = {
-      name: Joi.string(),
-      description: Joi.string(),
-      price: Joi.string(),
-    };
-
-    const result = Joi.validate(req.body, schema);
-    if (result.error) {
-      return res.status(404).send('meal not found');
-    }
-
-    mealToUpdate.name = req.body.name || mealToUpdate.name;
-    mealToUpdate.description = req.body.description || mealToUpdate.description;
-    mealToUpdate.price = req.body.price || mealToUpdate.price;
-
-    return res.status(200).send({
-      success: true,
-      message: 'meal updated successfully',
+    models.Meal.findAll().then(mealFound => {
+      models.Meal.update(
+        {
+          meal_name: req.body.meal_name || mealFound.meal_name,
+          meal_description:
+            req.body.meal_description || mealFound.meal_description,
+          meal_price: req.body.meal_price || mealFound.meal_price
+        },
+        { returning: true, where: { id: req.params.id } }
+      ).then(([updatedMeal]) =>
+        res.status(200).send({
+          success: true,
+          message: "meal updated successfully",
+          updatedMeal
+        })
+      );
     });
   }
 }
