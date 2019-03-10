@@ -1,14 +1,14 @@
-import Joi from 'joi';
-import menuDb from '../db/menu.db';
+import Joi from "joi";
+import models from "../models";
 
 class MenuController {
   // get all menu
   getAllMenu(req, res) {
-    menuDb.findAll().then((menu) => {
+    models.Menu.findAll().then(menu => {
       res.status(200).send({
         success: true,
-        message: 'menu retrieved successfully',
-        menu,
+        message: "menu retrieved successfully",
+        menu
       });
     });
   }
@@ -16,7 +16,7 @@ class MenuController {
   //   add a menu
   addMenu(req, res) {
     const schema = {
-      name: Joi.string().required(),
+      menu_name: Joi.string().required()
     };
 
     const menu = Joi.validate(req.body, schema);
@@ -25,11 +25,13 @@ class MenuController {
       return res.status(404).send(menu.error.message);
     }
 
-    return menuDb.create({ name: req.body.name }).then(myMenu => res.status(200).send({
-      success: true,
-      message: 'menu added successfully',
-      myMenu,
-    }));
+    return models.Menu.create({ menu_name: req.body.menu_name }).then(myMenu =>
+      res.status(200).send({
+        success: true,
+        message: "menu added successfully",
+        myMenu
+      })
+    );
   }
 }
 

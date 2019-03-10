@@ -1,13 +1,6 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import router from './routes/index';
-
-// Database
-import db from './config/dbConnect';
-// Test db connection
-db.authenticate()
-  .then(() => console.log('Database connected...'))
-  .catch(err => console.log(`Error: ${err}`));
+import express from "express";
+import bodyParser from "body-parser";
+import router from "./routes/index";
 
 const app = express();
 

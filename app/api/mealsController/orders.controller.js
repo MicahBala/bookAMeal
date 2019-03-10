@@ -1,14 +1,14 @@
-import Joi from 'joi';
-import orderDb from '../db/order.db';
+import Joi from "joi";
+import models from "../models";
 
 class OrderController {
   // get all orders
   getAllOrders(req, res) {
-    orderDb.findAll().then((orders) => {
+    models.Order.findAll().then(orders => {
       res.status(200).send({
         success: true,
-        message: 'orders were retrieved successfully',
-        orders,
+        message: "orders were retrieved successfully",
+        orders
       });
     });
   }
@@ -16,7 +16,7 @@ class OrderController {
   // place an order
   placeOrder(req, res) {
     const schema = {
-      name: Joi.string().required(),
+      order_name: Joi.string().required()
     };
 
     const order = Joi.validate(req.body, schema);
@@ -25,25 +25,30 @@ class OrderController {
       return res.status(404).send(order.error.message);
     }
 
-    return orderDb.create({ name: req.body.name }).then(myOrder => res.status(200).send({
-      success: true,
-      message: 'you have successfully placed an order',
-      myOrder,
-    }));
+    return models.Order.create({ order_name: req.body.order_name }).then(
+      myOrder =>
+        res.status(200).send({
+          success: true,
+          message: "you have successfully placed an order",
+          myOrder
+        })
+    );
   }
 
   //   modify an existing order
   modifyOrder(req, res) {
-    orderDb
-      .update(
-        { name: req.body.name },
-        { returning: true, where: { id: req.params.id } },
-      )
-      .then(([updatedOrder]) => res.status(200).send({
-        success: true,
-        message: 'order updated successfully',
-        updatedOrder,
-      }));
+    models.Order.findAll().then(orderFound => {
+      models.Order.update(
+        { order_name: req.body.order_name || orderFound.order_name },
+        { returning: true, where: { id: req.params.id } }
+      ).then(([updatedOrder]) =>
+        res.status(200).send({
+          success: true,
+          message: "order updated successfully",
+          updatedOrder
+        })
+      );
+    });
   }
 }
 
